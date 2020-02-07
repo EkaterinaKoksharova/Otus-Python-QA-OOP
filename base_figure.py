@@ -13,12 +13,12 @@ class BaseFigure:
 
     def add_square(self, other_figure):
         """ Метод возвращает сумму площадей двух геометриеских фигур"""
-
+        
         if isinstance(other_figure, BaseFigure):
             sum_areas = self.area + other_figure.area
             return sum_areas
         else:
-            print('Передан неверный класс геометрической фигуры')
+            return 'Передан неверный класс геометрической фигуры'
 
     def get_angles(self, figure):
         """ Метод возвращает количество углов геометрической фигуры"""

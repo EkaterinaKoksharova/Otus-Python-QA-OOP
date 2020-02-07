@@ -84,8 +84,11 @@ class TestFigures:
         """ Проверка вычисления периметра круга"""
         assert circle.calculate_perimeter() > circle.radius
 
-    @pytest.mark.parametrize('other_figure', [rectangle, triangle, square, circle])
+    @pytest.mark.parametrize('other_figure', [rectangle, triangle, square, circle, 'abrakadabra', 123456])
     @pytest.mark.parametrize('default_figure', [triangle, rectangle, square, circle])
     def test_add_square(self, other_figure, default_figure):
-        """ Проверка метода сложени площадей фигур"""
-        assert default_figure.add_square(other_figure) == default_figure.area + other_figure.area
+        """ Проверка метода сложения площадей фигур"""
+        if isinstance(other_figure, BaseFigure):
+            assert default_figure.add_square(other_figure) == default_figure.area + other_figure.area
+        else:
+            assert default_figure.add_square(other_figure) == 'Передан неверный класс геометрической фигуры'
